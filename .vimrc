@@ -9,7 +9,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'vydark.vim'
+" Plugin 'vydark.vim'
+Plugin 'whatyouhide/vim-gotham'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
@@ -38,6 +39,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"
+
+colorscheme gotham
 
 set number
 set nowrap
@@ -82,3 +86,8 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:NERDTreeWinSize=20
 
 map <F2> : Flisttoggle <CR>
+
+set foldmethod=syntax
+set foldlevelstart=1
+
+let javaScript_fold=1         " JavaScript
