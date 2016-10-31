@@ -9,13 +9,17 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-" Plugin 'vydark.vim'
+
+" Plugins
 Plugin 'whatyouhide/vim-gotham'
+" Plugin 'dracula/vim'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'pangloss/vim-javascript'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'maksimr/vim-jsbeautify'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
@@ -24,6 +28,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'functiontracker.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'junegunn/vim-easy-align'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,12 +48,30 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 
-colorscheme gotham
+" set background=dark
+syntax on
+" colorscheme vydark
+" colorscheme apprentice
+colorscheme quantum 
+" dolorscheme gotham
 
 set number
 set nowrap
 set ignorecase
 set smartcase
+
+set nu
+set relativenumber
+
+set backspace=indent,eol,start
+
+" show airline
+set laststatus=2
+
+" let mapleader = ","
+
+filetype plugin indent on
+" show existing tab with 4 spaces width
 
 " size of a hard tabstop
 set tabstop=4
@@ -58,6 +83,12 @@ set shiftwidth=4
 " other than the (hard)tabstop
 set softtabstop=4
 
+" On pressing tab, inser 4 spaces
+set expandtab
+
+" View tab charactesr
+set listchars=tab:>-
+
 " :au WinEnter * :setlocal number
 " :au WinLeave * :setlocal nonumber
 
@@ -66,7 +97,6 @@ set softtabstop=4
 :au WinEnter * :wincmd =
 
 " Nerdtree shortcut key
-let mapleader = ","
 nmap <leader>ne :NERDTree<cr>
 
 " Remove scrollbar
@@ -87,7 +117,18 @@ let g:NERDTreeWinSize=20
 
 map <F2> : Flisttoggle <CR>
 
-set foldmethod=syntax
-set foldlevelstart=1
+" set foldmethod=syntax
+" set foldlevelstart=1
 
 let javaScript_fold=1         " JavaScript
+
+map <c-f> :call JsBeautify()<cr>
+
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+set hlsearch
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" NERDTree width
+let g:NERDTreeWinSize = 20 
